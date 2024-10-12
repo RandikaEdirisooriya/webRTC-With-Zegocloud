@@ -1,8 +1,10 @@
+/* Base Styles */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #f1f1f1; /* Change the background color of the page */
+    background-color: #f1f1f1;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for dark mode */
 }
 
 .container {
@@ -10,6 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    flex-wrap: wrap; /* For responsiveness */
 }
 
 .image-container,
@@ -19,6 +22,7 @@ body {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
 .image-container {
@@ -38,7 +42,7 @@ body {
 
 .connected-users h2 {
     margin-bottom: 20px;
-    font-size: 22px; /* Increase the font size for the title */
+    font-size: 22px;
 }
 
 .connected-users ul {
@@ -48,11 +52,10 @@ body {
 
 .connected-users li {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .connected-users li i {
@@ -60,28 +63,19 @@ body {
     font-size: 25px;
 }
 
-/* Add a bulb icon after each connected user */
-.connected-users li i.fa-lightbulb-o {
-    font-size: 25px;
-}
-
-/* Online status - green bulb */
 .connected-users li i.online {
     color: #02fb10;
 }
 
-/* Offline status - red bulb */
 .connected-users li i.offline {
     color: #e61876;
 }
 
-/* Add a separator after each connected user */
 .connected-users li:not(:last-child) {
     border-bottom: 1px solid #ccc;
     padding-bottom: 5px;
 }
 
-/* Optional separation between blocks */
 .container > div:not(:last-child) {
     margin-right: 20px;
 }
@@ -91,24 +85,20 @@ div.main {
     flex-direction: column;
 }
 
-.new-meeting {
-    margin-bottom: 20px;
-}
-
 .new-meeting button {
     padding: 10px 20px;
-    background-color: #007BFF; /* Blue background color */
-    color: #fff; /* Text color */
+    background-color: #007BFF;
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s;
     width: 100%;
+    transition: background-color 0.3s;
 }
 
 .new-meeting button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3;
 }
 
 .join-meeting {
@@ -128,8 +118,8 @@ div.main {
 .join-meeting button {
     margin-left: 10px;
     padding: 8px 16px;
-    background-color: #4CAF50; /* Green background color */
-    color: #fff; /* Text color */
+    background-color: #4CAF50;
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -138,13 +128,13 @@ div.main {
 }
 
 .join-meeting button:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: #45a049;
 }
 
 #logoutBtn {
     padding: 10px 20px;
-    background-color: #f44336; /* Red background color */
-    color: #fff; /* Text color */
+    background-color: #f44336;
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -153,6 +143,57 @@ div.main {
 }
 
 #logoutBtn:hover {
-    background-color: #d32f2f; /* Darker red on hover */
+    background-color: #d32f2f;
 }
 
+/* Dark Mode */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .image-container,
+body.dark-mode .connected-users,
+body.dark-mode .new-meeting {
+    background-color: #1e1e1e;
+    box-shadow: none;
+}
+
+body.dark-mode .join-meeting input[type="text"] {
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+    border: 1px solid #444;
+}
+
+/* Mobile Styles (Up to 600px width) */
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .container > div:not(:last-child) {
+        margin-right: 0;
+    }
+
+    .image-container,
+    .connected-users,
+    .new-meeting {
+        width: 100%;
+    }
+
+    .connected-users li {
+        font-size: 18px;
+    }
+
+    .new-meeting button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .join-meeting button,
+    #logoutBtn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
